@@ -1,0 +1,144 @@
+name: PCLKNSR_x2
+description: xxx
+model_type: PCLKNSRModel
+scale: 2
+num_gpu: 1
+manual_seed: 17332411
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: DIV2K
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    meta_info_file: ...
+    io_backend:
+#      type: disk
+      type: lmdb
+
+    gt_size: 128
+    use_hflip: true
+    use_rot: true
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 16
+    batch_size_per_gpu: 32
+    dataset_enlarge_ratio: 64
+    prefetch_mode: cuda
+    pin_memory: True
+    persistent_workers: True
+
+  val_1:
+    name: Set5
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+  val_2:
+    name: Set14
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+  val_3:
+    name: BSD100
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+  val_4:
+    name: Urban100
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+  val_5:
+    name: Manga109
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+# network structures
+network_g:
+  type: TestSR
+  num_features: 42
+  num_groups: 6
+  num_blocks: [6,6,6,6,6,6]
+  k_size: 13
+  scale: 2
+
+# path
+path:
+  strict_load_g: false
+  pretrain_network_g: ~
+  resume_state: ~
+
+# training settings
+train:
+  ema_decay: 0.999
+  optim_g:
+    type: Lion
+    lr: !!float 2.4e-4
+    weight_decay: !!float 6e-2
+    betas: [0.9, 0.99]
+
+  scheduler:
+    type: MultiStepLR
+   milestones: [70000, 225000, 375000, 470000]
+#    milestones: [55000, 120000, 200000]
+    gamma: 0.5
+
+  total_iter: 500000
+
+#  warmup_iter: -1  # no warm up
+  warmup_iter: 10000
+
+  # losses
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+# validation settings
+val:
+  selfensemble_testing: false
+  val_freq: !!float 5e3
+  save_img: false
+  pbar: False
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 4
+      test_y_channel: true
+      better: higher  # the higher, the better. Default: higher
+    ssim:
+      type: calculate_ssim
+      crop_border: 4
+      test_y_channel: true
+      better: higher  # the higher, the better. Default: higher
+
+# logging settings
+logger:
+  print_freq: 5000
+  save_checkpoint_freq: !!float 5e4
+  use_tb_logger: false 
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl

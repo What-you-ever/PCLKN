@@ -1,0 +1,83 @@
+name: PCLKNSR_x4_test
+description: xxxx
+model_type: PCLKNSRModel
+scale: 4
+num_gpu: 1
+manual_seed: 17332411
+
+# dataset and data loader settings
+datasets:
+  val_1:
+    name: Set5
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+  val_2:
+    name: Set14
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+  val_3:
+    name: BSD100
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+  val_4:
+    name: Urban100
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+  val_5:
+    name: Manga109
+    type: PairedImageDataset
+    dataroot_gt: ...
+    dataroot_lq: ...
+    io_backend:
+      type: disk
+
+# network structures
+network_g:
+  type: PCLKNSR
+  num_features: 42
+  num_groups: 6
+  num_blocks: [6,6,6,6,6,6]
+  k_size: 13
+  scale: 4
+
+# path
+path:
+  pretrain_network_g: ...
+  strict_load_g: yes
+  param_key_g: params_ema
+
+# validation settings
+val:
+  save_img: true
+  suffix: ~
+  pbar: False
+#  selfensemble_testing: true
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 4
+      test_y_channel: true
+      better: higher  # the higher, the better. Default: higher
+    ssim:
+      type: calculate_ssim
+      crop_border: 4
+      test_y_channel: true
+      better: higher  # the higher, the better. Default: higher
+
