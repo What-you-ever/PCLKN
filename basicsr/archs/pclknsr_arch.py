@@ -195,7 +195,7 @@ class ELK(nn.Module):
         return flops
 
 
-class MPC(nn.Module):
+class MAPC(nn.Module):
 
 
     def __init__(self, dim, category_size=[128, 128, 64, 64, 32, 32], i_block=2, i_group=0):
@@ -288,7 +288,7 @@ class PCLKB(nn.Module):
         self.head = nn.Conv2d(n_feats, n_feats, 1)
         self.lka = ELK(dim=n_feats, k_size=k_size)
         self.sca = SCAttention(dim=n_feats)
-        self.diva = MPC(dim=n_feats, i_group=i_group, i_block=i_block)
+        self.diva = MAPC(dim=n_feats, i_group=i_group, i_block=i_block)
         self.alpha = nn.Parameter(torch.ones(2), requires_grad=True)
         self.norm1 = LayerNorm(n_feats)
         self.norm2 = LayerNorm(n_feats)
