@@ -1,4 +1,4 @@
-basicsr
+basicsr==1.4.2
 addict
 fairscale
 future
