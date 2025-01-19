@@ -1,7 +1,7 @@
 # PCLKN
 This repository is an official implementation of the paper "Adaptive Pixel Classification and Equivalent Large Kernels for Lightweight Image Super-Resolution".
 
-**This GitHub account is anonymous, with no personal information disclosed, and adheres to the double-blind principle. Researchers who actively open source their code should not be subject to an additional risk of manuscript rejection.**
+**This GitHub account is blank, with no personal information disclosed, and adheres to the double-blind principle. We open source our code solely for the purpose of academic exchange.**
 
 ## 📊 Results
 ### Quantitative Comparison
