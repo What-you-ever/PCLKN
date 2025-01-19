@@ -1,5 +1,7 @@
 # PCLKN
-This repository is an official implementation of the paper "Adaptive Pixel Classification and Equivalent Large Kernels for Lightweight Image Super-Resolution"
+This repository is an official implementation of the paper "Adaptive Pixel Classification and Equivalent Large Kernels for Lightweight Image Super-Resolution".
+
+**This GitHub account is anonymous, with no personal information disclosed, and adheres to the double-blind principle.**
 
 ## 📊 Results
 ### Quantitative Comparison
@@ -14,10 +16,6 @@ This repository is an official implementation of the paper "Adaptive Pixel Class
 <img src="images/visual2.png">
 
 ## Training & Testing 
-
-### Datasets 
-
-Training and benchmark datasets can be downloaded from [DIV2K](https://cv.snu.ac.kr/research/EDSR/DIV2K.tar) and [benchmarks](https://cv.snu.ac.kr/research/EDSR/benchmark.tar), respectively. 
 
 ### Dependencies 
 
