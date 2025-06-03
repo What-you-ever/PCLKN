@@ -15,6 +15,9 @@ This repository is an official implementation of the paper "Adaptive Pixel Class
 <img src="images/visual2.png">
 
 ## Training & Testing 
+### Pretrained Models
+ Download the [pretrained models](https://github.com/What-you-ever/PCLKN/releases/download/pretrained-models/pretrained-models.zip) for tesing or training.
+
 ### Datasets 
  
  Training and benchmark datasets can be downloaded from [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/) and [benchmarks](https://cv.snu.ac.kr/research/EDSR/benchmark.tar), respectively. 
