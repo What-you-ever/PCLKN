@@ -1,5 +1,6 @@
 # PCLKN
-This repository is an official implementation of the paper "Adaptive Pixel Classification and Equivalent Large Kernels for Lightweight Image Super-Resolution" for ICME2025.
+This repository is an official implementation of the [paper](https://ieeexplore.ieee.org/document/11210128) "Adaptive Pixel Classification and Equivalent Large Kernels for Lightweight Image Super-Resolution" for ICME2025.
+
 
 
 ## 📊 Results
@@ -58,3 +59,18 @@ python basicsr/test.py -opt options/test/PCLKNSR_x4.yml
 ## 🏅 Acknowledgements
 
 This project is built on [BasicSR](https://github.com/XPixelGroup/BasicSR) and [ATD](https://github.com/LabShuHangGU/Adaptive-Token-Dictionary). Special thanks to their excellent works!
+
+## 📝 Citation
+```
+@INPROCEEDINGS{11210128,
+  author={Lin, Pengyu and Zeng, Xunxun and Liu, Wanling and Chen, Huayi and Chen, Fei},
+  booktitle={2025 IEEE International Conference on Multimedia and Expo (ICME)}, 
+  title={Adaptive Pixel Classification and Equivalent Large Kernels for Lightweight Image Super-Resolution}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-6},
+  keywords={Adaptation models;Adaptive systems;Computational modeling;Superresolution;Benchmark testing;Feature extraction;Kernel;Computational complexity;Image reconstruction;lightweight image super-revolution;pixel classification;equivalent large kernels;spatial and channel attention;global priors},
+  doi={10.1109/ICME59968.2025.11210128}}
+```
+
